@@ -9,7 +9,7 @@
 
 <body>
     <h1>Chromium bug 333182458 reproduction</h1>
-    <p>This is a reproduction for <a href="https://issues.chromium.org/u/1/issues/" target="_blank">chrome bug report 333182458</a>.</p>
+    <p>This is a reproduction for <a href="https://issues.chromium.org/u/1/issues/333182458" target="_blank">chrome bug report 333182458</a>.</p>
     <h2>Bug description</h2>
     <p>
         For some reason, if you <a href="https://docs.python.org/3/library/zlib.html#zlib.compress">zlib.compress</a> the data you send to the service worker using <a href="https://web.dev/explore/notifications">web push</a> the <a href="https://developer.mozilla.org/en-US/docs/Web/API/PushEvent/data">event.data</a> property in the service worker always becomes null. 
