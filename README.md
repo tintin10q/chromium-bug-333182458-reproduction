@@ -3,7 +3,7 @@
 # Reproduction steps 
 
 0. Install the python dependencies with `pip install -r requirements.txt` 
-1. Add the CA.pem [chrome://settings/certificates](chrome://settings/certificates) to chrome as a CA to get a valid https server.
+1. Add the CA.pem to chrome ([chrome://settings/certificates](chrome://settings/certificates)) as a CA to get a valid https server.
 2. Start the webserver with `python https_server.py` the pass phrase is `test`
 3. Open [https://localhost:8000](https://localhost:8000)
 4. Click the `Subscribe` button
