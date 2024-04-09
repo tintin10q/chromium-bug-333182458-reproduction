@@ -16,5 +16,5 @@ httpd.socket = ssl.wrap_socket(httpd.socket,
                                certfile="CA.pem",
                                keyfile="KEY.pem",
                                ssl_version=ssl.PROTOCOL_TLS)
-print(f"Started server on {ip}:{port}")
+print(f"Started server on https://{ip}:{port}")
 httpd.serve_forever()
