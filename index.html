@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chromium bug 333182458 reproduction</title>
+</head>
+
+<body>
+    <h1>Chromium bug 333182458 reproduction</h1>
+    <p>This is a reproduction for <a href="https://issues.chromium.org/u/1/issues/" target="_blank">chrome bug report 333182458</a>.</p>
+    <h2>Bug description</h2>
+    <p>
+        For some reason, if you <a href="https://docs.python.org/3/library/zlib.html#zlib.compress">zlib.compress</a> the data you send to the service worker using <a href="https://web.dev/explore/notifications">web push</a> the <a href="https://developer.mozilla.org/en-US/docs/Web/API/PushEvent/data">event.data</a> property in the service worker always becomes null. 
+        A workaround to this is base64 encoding the compressed data. This is not great as base64 again makes the size of the data bigger again.
+    <h2 style="margin-bottom: 0;">Reproduction</h2>
+        Try it out by subscribing for push notifications on this device by clicking here:
+    <button id="subscribe_button" onclick="subscribe()" style="height: 2rem; margin-top: 1rem;">Subscribe</button>
+    <br>
+        Then copy the subscription data to the push.py file. Run <code>python push.py</code> and see that the <a href="https://developer.mozilla.org/en-US/docs/Web/API/PushEvent/data">data property</a> of the push event is null.
+        If you encode the compressed data into base64 the data is there in the push event of the service worker.
+    </p>
+    <br>
+    <div id="result"></div>
+    <br>
+    <button id="copy_button" onclick="copyText()" style="height: 2rem;" hidden>Copy subscription data</button>
+    <div id="after-copy"></div>
+    <br>
+    <br>
+</body>
+<script>
+    navigator.serviceWorker.register("sw.js")
+
+    async function subscribe() {
+        const sw = await navigator.serviceWorker.getRegistration()
+        const subscription = await sw.pushManager.subscribe({
+            applicationServerKey: "BBDW8hOnpxm3QH2zgxnEBIwYffVyOsVfsyXwduLIYyk6XBc_QJnDboB-0UFiUMMAThnUfXoIxFZcUX-aOJin95I",
+            userVisibleOnly: true,
+        })
+        const subscription_json = subscription.toJSON()
+        delete subscription_json.expirationTime
+        const subscription_str = JSON.stringify(subscription_json)
+
+        const result = document.getElementById("result")
+        result.textContent = subscription_str
+
+        document.getElementById("copy_button").hidden = false
+        document.getElementById("subscribe_button").textContent = "Subscribe again"
+    }
+
+    function copyText() {
+        // Get the text field
+        const copyText = document.getElementById("result").textContent;
+
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText);
+
+        // Alert the copied text
+        document.getElementById("copy_button").textContent = `Copied ${copyText.length} characters` 
+        document.getElementById("after-copy").textContent = "Now paste it into the push.py python file"
+    }
+
+</script>
+<style>
+    body {
+        margin-inline: 10dvh;
+        max-width: fit-content;
+}
+</style>
+
+</html>
