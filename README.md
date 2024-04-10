@@ -20,7 +20,7 @@ Make sure to import CA.pem as a certificate authority and not as a certificate. 
  
 ![Click subscribe](click_subscribe_button.png)
 
-7. Give permissions for push notifications if promoted
+7. Give permissions for push notifications if prompted
 8. Copy the subscription data by pressing the button
  
 ![Copy button](copy_button.png)
