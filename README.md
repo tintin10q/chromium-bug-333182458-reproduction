@@ -26,7 +26,7 @@ Make sure to import CA.pem as a certificate authority and not as a certificate. 
 9. Paste the subscription data into the [push.py](push.py) file (line 9). Replace the `...`
 10. Run `python push.py` 
 11. Observe that the [data property](https://developer.mozilla.org/en-US/docs/Web/API/PushEvent/data) of the push event in the service worker is null. 
-It should say `Received 64 bytes in push event` instead you get `Data is null!`.
+Instead, the data property should have the compressed data and the notification should say `Received 64 bytes in push event` instead you get the `Data is null!` notification.
 
 ![Data is null](compressed_data_is_null_notification.png)
 
