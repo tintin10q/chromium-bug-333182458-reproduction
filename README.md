@@ -15,16 +15,21 @@ Make sure to import CA.pem as a certificate authority and not as a certificate. 
 4. Start the webserver with `python https_server.py` the pass phrase is `test`
 5. Open [https://localhost:8000](https://localhost:8000)
 6. Click the `Subscribe` button
+![Click subscribe](click_subscribe_button.png)
 7. Give permissions for push notifications if promted
-8. Copy the subscription data into the [push.py](push.py) file (line 9). Replace the `...`
-9. Run `python push.py` 
-10. Observe that the [data property](https://developer.mozilla.org/en-US/docs/Web/API/PushEvent/data) of the push event in the service worker is null. 
+8. Copy the subscription data by pressing the button
+ 
+![Copy button](copy_button.png)
+
+9. Paste the subscription data into the [push.py](push.py) file (line 9). Replace the `...`
+10. Run `python push.py` 
+11. Observe that the [data property](https://developer.mozilla.org/en-US/docs/Web/API/PushEvent/data) of the push event in the service worker is null. 
 It should say `Received 64 bytes in push event` instead you get `Data is null!`.
 
 ![Data is null](compressed_data_is_null_notification.png)
 
-11. Uncomment line 21 in [push.py](push.py) to enable base64 encoding. 
-12. Run `python push.py` again, now the data is received properly.
+12. Uncomment line 21 in [push.py](push.py) to enable base64 encoding. 
+13. Run `python push.py` again, now the data is received properly.
 
 ![Data is being received](data_is_being_received_when_base64_encoded.png)
 
