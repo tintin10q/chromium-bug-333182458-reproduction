@@ -15,7 +15,9 @@ Make sure to import CA.pem as a certificate authority and not as a certificate. 
 4. Start the webserver with `python https_server.py` the pass phrase is `test`
 5. Open [https://localhost:8000](https://localhost:8000)
 6. Click the `Subscribe` button
+ 
 ![Click subscribe](click_subscribe_button.png)
+
 7. Give permissions for push notifications if promted
 8. Copy the subscription data by pressing the button
  
