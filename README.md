@@ -8,9 +8,11 @@ This repo is a reproduction for [Chromium bug 333182458](https://issues.chromium
 1. Start the virtual environment `. venv/bin/activate` or `source venv/bin/activate`
 2. Install the python dependencies with `pip install -r requirements.txt` 
 3. Add the CA.pem to chrome ([chrome://settings/certificates](chrome://settings/certificates)) to get a valid https server.
-Make sure to import CA.pem as a certificate authority and not as a certificate. It is the 3rd tab.
+Make sure to import CA.pem as a certificate authority and not as a certificate. It is the 3rd tab. 
 
 ![Certificate authority](certificate_authority.png) 
+
+![Certificate authority checkmark](ca_checkmark.png)
 
 4. Start the webserver with `python https_server.py` the pass phrase is `test`
 5. Open [https://localhost:8000](https://localhost:8000)
