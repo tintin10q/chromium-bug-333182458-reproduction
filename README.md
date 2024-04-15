@@ -26,7 +26,8 @@ Make sure to import CA.pem as a certificate authority and not as a certificate. 
 ![Copy button](copy_button.png)
 
 9. Paste the subscription data into the [push.py](push.py) file (line 9). Replace the `...`
-10. Run `python push.py` 
+10. Run `python push.py`. 
+> If you run this command in a new terminal window then make sure to also activate the virtual enviroment in this terminal otherwise you will get `ModuleNotFoundError`. Activate the virtual enviroment with the same command as step 1. `. venv/bin/activate` or `source venv/bin/activate` before running `python push.py`.
 11. Observe that the [data property](https://developer.mozilla.org/en-US/docs/Web/API/PushEvent/data) of the push event in the service worker is null. 
 Instead, the data property should have the compressed data and the notification should say `Received 64 bytes in push event` instead you get the `Data is null!` notification.
 
